@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SpandlyGo Support</title>
   <meta name="description" content="Help, contact, FAQ, privacy policy, and terms of service for SpandlyGo." />
+  <link rel="icon" href="./AppIcon-20@3x.png" sizes="60x60" />
+  <link rel="icon" href="./AppIcon-20@2x.png" sizes="40x40" />
+  <link rel="icon" href="./AppIcon-20@1x.png" sizes="20x20" />
+  <link rel="apple-touch-icon" href="./AppIcon-20@3x.png" />
+  <meta name="theme-color" content="#0b0f1a" />
   <style>
     :root{
       --bg: #0b0f1a;          /* page background */
@@ -25,7 +30,7 @@
     header{position:sticky;top:0;background:linear-gradient(180deg,rgba(11,15,26,.9),rgba(11,15,26,.7));backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--border);z-index:50}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-    .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 10px 22px rgba(79,70,229,.35)}
+    .logo{width:36px;height:36px;border-radius:10px;box-shadow:0 10px 22px rgba(79,70,229,.35);object-fit:cover;display:block}
     .brand span{font-weight:700}
     .nav a.link{padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--muted)}
     .nav a.link.active,.nav a.link:hover{color:var(--text)}
@@ -79,7 +84,7 @@
   <header>
     <div class="container nav">
       <a class="brand" href="#/">
-        <div class="logo" aria-hidden="true"></div>
+        <img class="logo" src="./AppIcon-20@3x.png" alt="SpandlyGo logo" />
         <span>SpandlyGo Support</span>
       </a>
       <nav>
