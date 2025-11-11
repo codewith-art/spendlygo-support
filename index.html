@@ -3,19 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Spendly Support</title>
-  <meta name="description" content="Help, contact, FAQ, privacy policy, and terms of service for Spendly." />
+  <title>SpandlyGo Support</title>
+  <meta name="description" content="Help, contact, FAQ, privacy policy, and terms of service for SpandlyGo." />
   <style>
     :root{
-      --bg: #0b0f1a;
-      --card: #101828;
-      --muted: #98a2b3;
-      --text: #e5e7eb;
-      --brand: #4f46e5;
-      --brand-2: #22d3ee;
-      --border: #1f2937;
-      --success: #10b981;
-      --danger: #ef4444;
+      --bg: #0b0f1a;          /* page background */
+      --card: #101828;        /* card background */
+      --muted: #98a2b3;       /* secondary text */
+      --text: #e5e7eb;        /* primary text */
+      --brand: #4f46e5;       /* brand gradient start */
+      --brand-2: #22d3ee;     /* brand gradient end */
+      --border: #1f2937;      /* subtle borders */
       --radius: 16px;
       --shadow: 0 10px 30px rgba(0,0,0,.35);
     }
@@ -43,8 +41,7 @@
 
     .grid{display:grid;gap:20px}
     .grid.two{grid-template-columns:1fr 1fr}
-    .grid.three{grid-template-columns:repeat(3,1fr)}
-    @media (max-width:900px){.hero{grid-template-columns:1fr}.grid.two,.grid.three{grid-template-columns:1fr}}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.grid.two{grid-template-columns:1fr}}
 
     .btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:12px;padding:12px 16px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:600;cursor:pointer;text-decoration:none}
     .btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text)}
@@ -83,7 +80,7 @@
     <div class="container nav">
       <a class="brand" href="#/">
         <div class="logo" aria-hidden="true"></div>
-        <span>Spendly Support</span>
+        <span>SpandlyGo Support</span>
       </a>
       <nav>
         <a class="link" data-nav href="#/">Home</a>
@@ -105,7 +102,7 @@
           <div class="kpis">
             <div class="kpi"><strong>Restore Purchases</strong><br/><span class="muted">Open app → Settings → Restore Purchases</span></div>
             <div class="kpi"><strong>Upgrade to Premium</strong><br/><span class="muted">Open app → Settings → Premium</span></div>
-            <div class="kpi"><strong>Contact</strong><br/><span class="muted"><a href="mailto:support@yourdomain.com">support@yourdomain.com</a></span></div>
+            <div class="kpi"><strong>Contact</strong><br/><span class="muted"><a href="mailto:support@spandlygo.com">support@spandlygo.com</a></span></div>
           </div>
           <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
             <a class="btn" href="#/contact">Contact Support</a>
@@ -139,7 +136,7 @@
             <p>Open the app → <strong>Settings → Restore Purchases</strong>. Make sure you’re signed in with the same Apple ID used for purchase.</p>
           </details>
           <details>
-            <summary>How do I upgrade to SpendlyGo Premium?</summary>
+            <summary>How do I upgrade to SpandlyGo Premium?</summary>
             <p>Open the app → <strong>Settings → Premium</strong> to view plans and subscribe via Apple.</p>
           </details>
           <details>
@@ -154,15 +151,15 @@
         <div class="card pad">
           <h2>Contact</h2>
           <p class="lead">We usually reply within 1–2 business days.</p>
-          <form id="support-form" action="https://formspree.io/f/your-endpoint" method="POST">
-            <!-- Replace the action URL with your Formspree endpoint, or switch to mailto: as needed. -->
+          <!-- MAILTO FORM VERSION -->
+          <form id="support-form" data-mailto="support@spandlygo.com">
             <div class="row">
               <div>
                 <label for="name">Name</label>
                 <input id="name" name="name" autocomplete="name" required />
               </div>
               <div>
-                <label for="email">Email</label>
+                <label for="email">Your Email</label>
                 <input id="email" name="email" type="email" autocomplete="email" required />
               </div>
             </div>
@@ -180,11 +177,10 @@
               <label for="message">Message</label>
               <textarea id="message" name="message" required placeholder="Describe the issue or question…"></textarea>
             </div>
-            <input type="hidden" name="_subject" value="Spendly Support Request" />
-            <button class="btn" type="submit">Send message</button>
-            <div class="success" id="form-success">Thanks! We received your message.</div>
-            <div class="error" id="form-error">Something went wrong. Please email <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>.</div>
-            <p class="hint">By contacting us, you agree to the <a href="#/privacy">Privacy Policy</a>.</p>
+            <button class="btn" type="submit">Send via Email</button>
+            <div class="success" id="form-success">Email composer opened. If not, use the email link below.</div>
+            <div class="error" id="form-error">Couldn’t open your email app. Please email <a href="mailto:support@spandlygo.com">support@spandlygo.com</a>.</div>
+            <p class="hint">Or email us directly: <a href="mailto:support@spandlygo.com?subject=SpandlyGo%20Support">support@spandlygo.com</a></p>
           </form>
         </div>
       </div>
@@ -194,15 +190,15 @@
     <section id="page-contact" class="page">
       <div class="card pad">
         <h2>Contact Support</h2>
-        <p class="lead">Fill out the form and we’ll get back to you. You can also email <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>.</p>
-        <form id="contact-form" action="https://formspree.io/f/your-endpoint" method="POST">
+        <p class="lead">Fill out the form and we’ll get back to you. You can also email <a href="mailto:support@spandlygo.com">support@spandlygo.com</a>.</p>
+        <form id="contact-form" data-mailto="support@spandlygo.com">
           <div class="row">
             <div>
               <label for="cname">Name</label>
               <input id="cname" name="name" required />
             </div>
             <div>
-              <label for="cemail">Email</label>
+              <label for="cemail">Your Email</label>
               <input id="cemail" name="email" type="email" required />
             </div>
           </div>
@@ -210,9 +206,9 @@
             <label for="cmessage">Message</label>
             <textarea id="cmessage" name="message" required></textarea>
           </div>
-          <button class="btn" type="submit">Send message</button>
-          <div class="success" id="contact-success">Thanks! We received your message.</div>
-          <div class="error" id="contact-error">Something went wrong. Please email <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>.</div>
+          <button class="btn" type="submit">Send via Email</button>
+          <div class="success" id="contact-success">Email composer opened. If not, use the email link above.</div>
+          <div class="error" id="contact-error">Couldn’t open your email app. Please email <a href="mailto:support@spandlygo.com">support@spandlygo.com</a>.</div>
         </form>
       </div>
     </section>
@@ -223,7 +219,7 @@
         <h1>Privacy Policy</h1>
         <p><em>Last updated: 2025-10-08</em></p>
         <h2>Overview</h2>
-        <p>Spendly helps you capture and organize receipts. We aim to process data on device whenever possible and minimize data sharing.</p>
+        <p>SpandlyGo helps you capture and organize receipts. We aim to process data on device whenever possible and minimize data sharing.</p>
         <h2>Data You Provide</h2>
         <ul>
           <li>Receipt images and text you scan</li>
@@ -262,7 +258,7 @@
         <h1>Terms of Service</h1>
         <p><em>Last updated: 2025-10-08</em></p>
         <h2>Introduction</h2>
-        <p>These Terms govern your use of Spendly. By using the app, you agree to these Terms.</p>
+        <p>These Terms govern your use of SpandlyGo. By using the app, you agree to these Terms.</p>
         <h2>Free Tier &amp; Subscriptions</h2>
         <p>You may scan up to 10 receipts for free. Continued use requires a paid, auto‑renewing subscription billed through Apple. Subscriptions renew unless canceled at least 24 hours before the end of the current period in your Apple ID settings.</p>
         <h2>Use of the App</h2>
@@ -270,7 +266,7 @@
         <h2>Data Processing &amp; Sync</h2>
         <p>The app processes receipt images and text on device. You may enable optional cloud processing to improve extraction. You can also enable iCloud sync or connect to a business workspace, which may sync data with company systems.</p>
         <h2>Intellectual Property</h2>
-        <p>Spendly, including its UI and underlying technology, is owned by its developer. You receive a limited, revocable license to use the app.</p>
+        <p>SpandlyGo, including its UI and underlying technology, is owned by its developer. You receive a limited, revocable license to use the app.</p>
         <h2>Availability &amp; Changes</h2>
         <p>We may modify, suspend, or discontinue features at any time. We may update these Terms; continued use constitutes acceptance of changes.</p>
         <h2>Disclaimer &amp; Liability</h2>
@@ -282,7 +278,7 @@
         <strong>Company Info:</strong> <em>Legal entity name and registered address.</em></p>
         <h2>Change Log</h2>
         <ul>
-          <li>2025-10-08: Initial publication of Spendly terms.</li>
+          <li>2025-10-08: Initial publication of SpandlyGo terms.</li>
         </ul>
       </article>
     </section>
@@ -294,65 +290,60 @@
         <a href="#/privacy">Privacy</a>
         <a href="#/terms">Terms</a>
         <a href="#/contact">Contact</a>
-        <span>© <span id="year"></span> Spendly</span>
+        <span>© <span id="year"></span> SpandlyGo</span>
       </div>
     </div>
   </footer>
 
   <script>
-    // Tiny hash router for Pages (so you get /#/privacy & /#/terms URLs)
-    const routes = {
-      '/': 'page-home',
-      '/faq': 'page-faq',
-      '/contact': 'page-contact',
-      '/privacy': 'page-privacy',
-      '/terms': 'page-terms',
-    };
+    // Tiny hash router so GitHub Pages can serve sections as pseudo-pages
+    const routes = {'/':'page-home','/faq':'page-faq','/contact':'page-contact','/privacy':'page-privacy','/terms':'page-terms'};
     const setActive = (id) => {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      const el = document.getElementById(id) || document.getElementById('page-home');
-      el.classList.add('active');
-      // nav highlight
+      (document.getElementById(id)||document.getElementById('page-home')).classList.add('active');
       document.querySelectorAll('[data-nav]').forEach(a => a.classList.remove('active'));
       const active = [...document.querySelectorAll('[data-nav]')].find(a => a.getAttribute('href') === '#' + location.hash);
       if (active) active.classList.add('active');
       window.scrollTo({top:0,behavior:'instant'});
     };
-    const onRoute = () => {
-      const hash = location.hash.replace('#','') || '/';
-      setActive(routes[hash] || 'page-home');
-    };
+    const onRoute = () => setActive(routes[(location.hash||'#/').replace('#','')]||'page-home');
     window.addEventListener('hashchange', onRoute);
-    window.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('year').textContent = new Date().getFullYear();
-      onRoute();
-    });
+    window.addEventListener('DOMContentLoaded', () => { document.getElementById('year').textContent = new Date().getFullYear(); onRoute(); });
 
-    // Progressive enhancement: intercept Formspree responses for UX
-    function wireForm(id){
-      const form = document.getElementById(id);
-      if(!form) return;
-      const success = form.parentElement.querySelector('.success');
-      const error = form.parentElement.querySelector('.error');
-      form.addEventListener('submit', async (e)=>{
-        // If action="mailto:" let the browser handle it
-        if(form.action.startsWith('mailto:')) return;
+    // Mailto form handler: builds an email with subject/body from fields
+    function wireMailtoForm(id){
+      const form = document.getElementById(id); if(!form) return;
+      const to = form.getAttribute('data-mailto') || 'support@spandlygo.com';
+      const success = form.querySelector('.success') || form.parentElement.querySelector('.success');
+      const error = form.querySelector('.error') || form.parentElement.querySelector('.error');
+      form.addEventListener('submit', (e)=>{
         e.preventDefault();
-        success && (success.style.display='none');
-        error && (error.style.display='none');
+        const data = new FormData(form);
+        const name = (data.get('name')||'').toString().trim();
+        const email = (data.get('email')||'').toString().trim();
+        const topic = (data.get('topic')||'').toString().trim();
+        const device = (data.get('device')||'').toString().trim();
+        const message = (data.get('message')||'').toString().trim();
+        const subject = encodeURIComponent(`SpandlyGo Support — ${topic || 'General'}`);
+        const bodyLines = [
+          `Name: ${name}`,
+          `Email: ${email}`,
+          topic ? `Topic: ${topic}` : '',
+          device ? `Device: ${device}` : '',
+          '',
+          message
+        ].filter(Boolean).join('\n');
+        const body = encodeURIComponent(bodyLines);
+        const mailto = `mailto:${to}?subject=${subject}&body=${body}`;
+        // Try opening the user's mail app
         try{
-          const res = await fetch(form.action, { method:'POST', body: new FormData(form), headers: { 'Accept':'application/json' } });
-          if(res.ok){
-            form.reset();
-            success && (success.style.display='block');
-          }else{ throw new Error('bad'); }
-        }catch(err){
-          error && (error.style.display='block');
-        }
+          window.location.href = mailto;
+          if(success) success.style.display='block';
+        }catch(err){ if(error) error.style.display='block'; }
       });
     }
-    wireForm('support-form');
-    wireForm('contact-form');
+    wireMailtoForm('support-form');
+    wireMailtoForm('contact-form');
   </script>
 </body>
 </html>
