@@ -7,70 +7,82 @@
   <meta name="description" content="Help, contact, FAQ, privacy policy, and terms of service for SpendlyGo." />
   <style>
     :root{
-      --bg: #0e111b;
-      --card: #101828;
-      --muted: #98a2b3;
-      --text: #e5e7eb;
-      --brand: #8dbde6;
-      --brand-2: #22d3ee;
-      --border: #232b35;
-      --success: #10b981;
-      --danger: #ef4444;
-      --radius: 16px;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --bg:#03050c;
+      --surface:#0b1324;
+      --surface-soft:#141d32;
+      --muted:#a0acc1;
+      --text:#fbfdff;
+      --brand:#6b7bff;
+      --brand-2:#7df2ff;
+      --border:rgba(255,255,255,.09);
+      --radius:26px;
+      --shadow:0 25px 50px rgba(4,8,18,.4);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:
-      linear-gradient(90deg,#050912 0%,#050912 55%,#182c56 100%),
-      radial-gradient(1200px 600px at 80% -10%,rgba(79,70,229,.35),transparent),
-      radial-gradient(900px 400px at -10% 0,rgba(34,211,238,.25),transparent),
-      #050912;color:var(--text)}
-    a{color:inherit}
-    .container{max-width:1040px;margin:0 auto;padding:24px}
-    header{position:sticky;top:0;background:linear-gradient(180deg,rgba(11,15,26,.9),rgba(11,15,26,.7));backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--border);z-index:50}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    body{margin:0;font:17px/1.55 "SF Pro Display","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:
+      radial-gradient(900px 520px at 80% -30%,rgba(114,132,255,.35),transparent),
+      radial-gradient(900px 520px at 0% -15%,rgba(125,242,255,.3),transparent),
+      linear-gradient(105deg,#03050c 0%,#040815 60%,#0f2141 100%),
+      var(--bg);}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1180px;margin:0 auto;padding:32px 32px 64px}
+    header{position:sticky;top:0;background:rgba(3,5,12,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08);z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
     .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-    .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 10px 22px rgba(79,70,229,.35)}
+    .logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,var(--brand),var(--brand-2));box-shadow:0 12px 24px rgba(91,107,255,.35)}
     .brand span{font-weight:700}
-    .nav a.link{padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--muted)}
-    .nav a.link.active,.nav a.link:hover{color:var(--text)}
+    .nav a.link{padding:8px 14px;border-radius:999px;text-decoration:none;color:var(--muted);transition:color .2s ease,background .2s ease}
+    .nav a.link:hover,.nav a.link.active{color:var(--text);background:rgba(255,255,255,.04)}
 
-    .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:stretch;padding:36px 0}
-    .hero > *{height:100%}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.0)),var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
-    .card.pad{padding:28px}
-    h1{font-size: clamp(28px, 4vw, 44px);line-height:1.1;margin:0 0 10px}
-    h2{font-size: clamp(20px, 2.6vw, 28px);line-height:1.2;margin:0 0}
-    p.lead{color:var(--muted);margin:0 0 18px}
-    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
-    .kpi{padding:16px;border:1px dashed var(--border);border-radius:12px;height:100%}
+    .hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:32px;align-items:stretch;padding:32px 0 10px}
+    .hero>*{min-width:0}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card.pad{padding:34px}
+    h1{font-size: clamp(36px,6vw,58px);line-height:1.05;margin:0}
+    h2{font-size: clamp(24px,3vw,34px);margin:0}
+    p.lead{color:var(--muted);margin:10px 0 0}
+    .grid{display:grid;gap:24px}
+    .grid.two{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+    .grid.three{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    @media (max-width:900px){.hero{gap:32px;padding:50px 0}}
 
-    .grid{display:grid;gap:20px}
-    .grid.two{grid-template-columns:1fr 1fr}
-    .grid.three{grid-template-columns:repeat(3,1fr)}
-    @media (max-width:900px){.hero{grid-template-columns:1fr}.grid.two,.grid.three{grid-template-columns:1fr}}
-
-    .btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:12px;padding:12px 16px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:600;cursor:pointer;text-decoration:none}
-    .btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text)}
-    .hero-text{display:flex;flex-direction:column;gap:20px}
-    .hero-video{display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px}
-    .hero-video .lead{margin:0;color:var(--muted)}
-    .video-frame{width:100%;max-width:320px;margin:0 auto;border-radius:32px;padding:0;background:linear-gradient(160deg,rgba(79,70,229,.55),rgba(34,211,238,.35));box-shadow:var(--shadow)}
-    .video-frame video{width:100%;border-radius:24px;display:block;background:#000}
-    .qr-panel{display:flex;flex-direction:column;gap:12px;align-items:center;margin-top:auto}
-    .qr-panel img{width:150px;height:150px;border-radius:16px;border:1px solid rgba(255,255,255,.1);background:#fff}
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-    .stat-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:12px}
-    .stat{padding:14px;border:1px solid var(--border);border-radius:12px;background:rgba(255,255,255,.02)}
-    .stat strong{font-size:20px;color:#fff;display:block}
-    .store-btn{width:100%;justify-content:center}
-    .marketing-highlights{margin-top:24px}
+    .btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:999px;padding:12px 22px;background:linear-gradient(120deg,var(--brand),var(--brand-2));color:#fff;font-weight:600;cursor:pointer;box-shadow:0 12px 28px rgba(91,107,255,.3)}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.18);color:var(--text);box-shadow:none}
+    .hero-left{display:flex;flex-direction:column;gap:32px}
+    .hero-left p{margin:0}
+    .promo-copy{color:var(--muted);margin:8px 0 0;font-size:16px;max-width:520px}
+    .hero-right{display:flex;flex-direction:column;gap:24px;text-align:center}
+    .hero-right p{margin:0;color:var(--muted)}
+    .device-frame{width:100%;border-radius:32px;padding:0;background:radial-gradient(circle at 30% 0%,rgba(255,255,255,.08),rgba(0,0,0,.92));box-shadow:0 25px 70px rgba(3,5,12,.55)}
+    .device-frame video{width:100%;border-radius:26px;display:block;background:#000}
+    .qr-row{display:flex;gap:18px;align-items:center;border:1px solid var(--border);border-radius:24px;padding:18px 22px;background:rgba(255,255,255,.05);width:100%;justify-content:flex-start;text-align:left}
+    .qr-row img{width:120px;height:120px;border-radius:20px;background:#fff;padding:10px;box-shadow:0 15px 30px rgba(0,0,0,.25)}
+    .qr-row span{display:block;color:var(--muted);font-size:14px}
+    .store-btn{width:auto}
+    .stat-line{display:flex;gap:24px;flex-wrap:wrap;color:var(--muted);font-size:15px}
+    .stat-line strong{display:block;color:var(--text);font-size:22px}
+    .pill-list{display:flex;flex-wrap:wrap;gap:12px}
+    .pill{padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.1);font-size:14px;color:#dbe8ff}
+    .feature-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:16px}
+    .feature{padding:14px;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02)}
+    .feature strong{display:block;font-size:16px;margin-bottom:4px}
+    .feature span{font-size:13px;color:var(--muted)}
+    .action-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:28px}
+    .action-card{padding:20px;border-radius:20px;background:var(--surface);border:1px solid rgba(255,255,255,.08);box-shadow:0 16px 30px rgba(0,0,0,.25);display:flex;flex-direction:column;gap:8px}
+    .action-card strong{font-size:18px}
+    .action-card span{font-size:14px;color:var(--muted)}
+    .action-card a{color:var(--brand-2);font-weight:600;font-size:14px}
+    .utility-grid{margin-top:46px}
+    .utility-card{background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid var(--border);border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:12px}
+    .utility-card h3{margin:0;font-size:20px}
+    .utility-card p{margin:0;color:var(--muted)}
+    .utility-card a{color:var(--brand-2);font-weight:600;font-size:14px}
+    .eyebrow{font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--muted);margin:0;font-weight:600}
     .checklist{list-style:none;padding-left:0;margin:0}
-    .checklist li{display:flex;gap:8px;margin-bottom:8px;color:var(--muted)}
-    .checklist li::before{content:'-';color:var(--brand);font-weight:700}
+    .checklist li{margin-bottom:8px;color:var(--muted)}
+    .checklist li::before{content:'— ';color:var(--brand)}
     .features-grid .card{min-height:100%}
-    .eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0;font-weight:600}
 
     /* Accordion */
     details{border:1px solid var(--border);border-radius:12px;padding:12px 16px;background:rgba(255,255,255,.02)}
@@ -122,80 +134,97 @@
     <!-- HOME -->
     <section id="page-home" class="page active">
       <div class="hero">
-        <section class="card pad hero-text">
-          <p class="eyebrow">Customer helpdesk</p>
-          <h1>Answers, support, and premium help in one place.</h1>
-          <p class="lead">SpendlyGo makes every receipt audit-ready. Reach support, learn tips, and manage your subscription without hunting through menus.</p>
+        <section class="card pad hero-left">
+          <div>
+            <p class="eyebrow">AI receipt scanner, ERP-ready</p>
+            <h1>Minimal help center. Maximum clarity.</h1>
+            <p class="lead">Restore a purchase, reach out, or learn how SpendlyGo keeps every receipt audit-ready—without digging through menus.</p>
+            <p class="promo-copy">Fast, private receipt capture with on-device AI. Auto-organize expenses, sync to ERP, and export to PDF/CSV. Upgrade for unlimited scans. Includes 10 free scans.</p>
+          </div>
           <div class="cta-row">
             <a class="btn" href="#/contact">Contact Support</a>
-            <a class="btn ghost" href="#/faq">Explore FAQs</a>
+            <a class="btn ghost" href="#/faq">Browse FAQs</a>
           </div>
-          <div class="kpis">
-            <div class="kpi"><strong>Restore Purchases</strong><br/><span class="muted">Open app → Settings → Restore Purchases</span></div>
-            <div class="kpi"><strong>Upgrade to Premium</strong><br/><span class="muted">Open app → Settings → Premium</span></div>
-            <div class="kpi"><strong>Email</strong><br/><span class="muted"><a href="mailto:spendlygo@outlook.com">spendlygo@outlook.com</a></span></div>
+          <div class="stat-line">
+            <div><strong>24h</strong>Avg. first reply</div>
+            <div><strong>98%</strong>Customer satisfaction</div>
+            <div><strong>10k+</strong>Receipts processed weekly</div>
           </div>
-          <div class="stat-cards">
-            <div class="stat">
-              <strong>24h</strong>
-              <span class="muted">Avg. first-response time</span>
-            </div>
-            <div class="stat">
-              <strong>98%</strong>
-              <span class="muted">Customer satisfaction</span>
-            </div>
-            <div class="stat">
-              <strong>10k+</strong>
-              <span class="muted">Receipts processed weekly</span>
-            </div>
+          <div class="feature-list">
+            <article class="feature">
+              <strong>On-device AI</strong>
+              <span>Fast private recognition—even offline.</span>
+            </article>
+            <article class="feature">
+              <strong>ERP-ready</strong>
+              <span>Push receipts to NetSuite, QuickBooks, or custom webhooks.</span>
+            </article>
+            <article class="feature">
+              <strong>One-tap exports</strong>
+              <span>PDF, CSV, and full audit history whenever you need it.</span>
+            </article>
           </div>
         </section>
-        <aside class="card pad hero-video">
-          <h2>See SpendlyGo in action</h2>
-          <p class="lead">Watch how SpendlyGo captures receipts, categorizes expenses, and keeps teams audit-ready.</p>
-          <div class="video-frame">
+        <section class="card pad hero-right">
+          <div>
+            <p class="eyebrow">Product tour</p>
+            <h2>See SpendlyGo on iOS</h2>
+            <p class="lead">Watch the AI receipt scanner capture, categorize, and sync expenses.</p>
+          </div>
+          <div class="device-frame">
             <video id="demo-video" controls autoplay muted loop playsinline poster="./AppIcon-20@3x.png">
               <source src="./spendlygo_iOS_app.MP4" type="video/mp4" />
               Your browser does not support the video tag. You can <a href="./spendlygo_iOS_app.MP4">download the video here</a>.
             </video>
           </div>
-          <div class="qr-panel">
-            <p class="muted" style="font-size:14px">Scan the QR or tap below to grab SpendlyGo from the App Store.</p>
+          <div class="qr-row">
             <img src="./qr_code.png" alt="QR code linking to SpendlyGo on the App Store" />
-            <a class="btn store-btn" href="https://apps.apple.com/ch/app/spendlygo/id6754088390" target="_blank" rel="noopener">Download on the App Store</a>
+            <div>
+              <strong>Download SpendlyGo</strong>
+              <span>Scan the QR or tap below to open the App Store.</span>
+              <div style="margin-top:10px">
+                <a class="btn store-btn" href="https://apps.apple.com/ch/app/spendlygo/id6754088390" target="_blank" rel="noopener">App Store</a>
+              </div>
+            </div>
           </div>
-        </aside>
+        </section>
       </div>
-      <div class="grid three marketing-highlights features-grid">
-        <section class="card pad">
+      <div class="action-grid">
+        <article class="action-card">
+          <strong>Restore purchases</strong>
+          <span>Open the app → Settings → Restore Purchases.</span>
+          <a href="#/faq">Step-by-step guide</a>
+        </article>
+        <article class="action-card">
+          <strong>Upgrade to Premium</strong>
+          <span>Review plans in Settings → Premium.</span>
+          <a href="#/faq">Compare plans</a>
+        </article>
+        <article class="action-card">
+          <strong>Email support</strong>
+          <span>We reply within one business day.</span>
+          <a href="mailto:spendlygo@outlook.com">spendlygo@outlook.com →</a>
+        </article>
+      </div>
+      <div class="utility-grid grid three">
+        <article class="utility-card">
+          <p class="eyebrow">Contact</p>
+          <h3>Talk to SpendlyGo</h3>
+          <p>Use the support form or email us for human help within one business day.</p>
+          <a href="#/contact">Contact support →</a>
+        </article>
+        <article class="utility-card">
           <p class="eyebrow">Resources</p>
-          <h2>Top Links</h2>
-          <ul>
-            <li><a href="#/privacy">Privacy Policy</a></li>
-            <li><a href="#/terms">Terms of Service</a></li>
-            <li><a href="#/faq">Receipt scanning tips</a></li>
-          </ul>
-        </section>
-        <section class="card pad">
-          <p class="eyebrow">Why teams upgrade</p>
-          <h2>SpendlyGo advantages</h2>
-          <ul class="checklist">
-            <li>On-device extraction keeps data private</li>
-            <li>Optional iCloud sync to stay in lockstep</li>
-            <li>ERP/webhook integrations for instant sharing</li>
-            <li>Friendly support replies within 48 hours</li>
-          </ul>
-        </section>
-        <section class="card pad">
+          <h3>Self-serve answers</h3>
+          <p>FAQs, Privacy Policy, Terms, and receipt scanning tips at your fingertips.</p>
+          <a href="#/faq">Visit the FAQ →</a>
+        </article>
+        <article class="utility-card">
           <p class="eyebrow">Security</p>
-          <h2>Peace of mind</h2>
-          <ul class="checklist">
-            <li>Data export & delete tools built-in</li>
-            <li>Apple purchase handling + RevenueCat</li>
-            <li>Encrypted transit & optional on-device only mode</li>
-            <li>Compliant with company ERP workflows</li>
-          </ul>
-        </section>
+          <h3>Data peace of mind</h3>
+          <p>On-device extraction, optional iCloud sync, and instant export/delete controls.</p>
+          <a href="#/privacy">Review privacy →</a>
+        </article>
       </div>
     </section>
 
