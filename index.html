@@ -104,19 +104,23 @@
     
     /* Features Section */
     .features-section{margin:64px 0}
-    .features-grid-large{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px;margin-top:32px}
-    .feature-card-large{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px;transition:transform .2s ease,box-shadow .2s ease}
+    .features-grid-large{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px;margin-top:32px;align-items:stretch}
+    .feature-card-large{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px;transition:transform .2s ease,box-shadow .2s ease;display:flex;flex-direction:column;height:100%}
     .feature-card-large:hover{transform:translateY(-2px);box-shadow:0 20px 40px rgba(0,0,0,.3)}
     .feature-card-large.feature-highlight{grid-column:span 2;background:linear-gradient(135deg,rgba(107,123,255,.08),rgba(125,242,255,.08))}
     @media (max-width:900px){.feature-card-large.feature-highlight{grid-column:span 1}}
-    .feature-icon{font-size:40px;margin-bottom:16px}
+    .feature-icon{font-size:40px;margin-bottom:16px;display:block}
     .feature-card-large h3{margin:0 0 12px;font-size:22px}
     .feature-card-large>p{margin:0 0 16px;color:var(--muted);line-height:1.6}
-    .feature-benefits{list-style:none;padding:0;margin:16px 0 0}
+    .feature-benefits{list-style:none;padding:0;margin:16px 0 0;flex-grow:0}
     .feature-benefits li{padding:8px 0 8px 28px;color:var(--muted);font-size:15px;position:relative}
     .feature-benefits li::before{content:'✓';position:absolute;left:0;color:var(--brand-2);font-weight:700}
-    .feature-screenshot{margin-top:24px;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
-    .feature-screenshot img{width:100%;display:block;background:var(--surface-soft)}
+    .screenshot-hint{margin-top:auto;padding-top:16px;text-align:center;font-size:14px;color:var(--brand-2);opacity:.7;transition:opacity .2s ease}
+    .has-screenshot-hover{position:relative;cursor:pointer}
+    .has-screenshot-hover:hover .screenshot-hint{opacity:0}
+    .feature-screenshot-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(3,5,12,.98);backdrop-filter:blur(8px);border-radius:20px;opacity:0;pointer-events:none;transition:opacity .3s ease;display:flex;align-items:center;justify-content:center;padding:24px;z-index:10}
+    .has-screenshot-hover:hover .feature-screenshot-overlay{opacity:1;pointer-events:auto}
+    .feature-screenshot-overlay img{max-width:100%;max-height:100%;object-fit:contain;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
     
     /* Pricing Section */
     .pricing-section{margin:64px 0}
@@ -356,7 +360,7 @@
             </ul>
           </article>
 
-          <article class="feature-card-large feature-highlight">
+          <article class="feature-card-large feature-highlight has-screenshot-hover">
             <div class="feature-icon">🔗</div>
             <h3>Connect to Any ERP or Accounting Tool</h3>
             <p>SpendlyGo speaks your accounting system's language. Export structured data that fits your existing finance stack—no manual reformatting required.</p>
@@ -366,7 +370,8 @@
               <li>Define field mappings to match your data model</li>
               <li>Delivery tracking with automatic retry for failed syncs</li>
             </ul>
-            <div class="feature-screenshot">
+            <div class="screenshot-hint">💡 Hover to see ERP connection settings</div>
+            <div class="feature-screenshot-overlay">
               <img src="./erp_automation/connections.png" alt="ERP connection settings showing NetSuite, QuickBooks, and custom webhook configurations" />
             </div>
           </article>
