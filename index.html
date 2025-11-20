@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SpendlyGo </title>
-  <meta name="description" content="Help, contact, FAQ, privacy policy, and terms of service for SpendlyGo." />
+  <title>SpendlyGo - AI Receipt Scanner & ERP Integration for iPhone</title>
+  <meta name="description" content="Turn receipts into ERP-ready data in seconds. SpendlyGo uses on-device AI to scan, extract, and organize expenses. Sync to NetSuite, QuickBooks, Xero, or any accounting system. Private, fast, accurate. Try 10 scans free." />
   <style>
     :root{
       --bg:#03050c;
@@ -19,6 +19,7 @@
       --shadow:0 25px 50px rgba(4,8,18,.4);
     }
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     html,body{height:100%}
     body{margin:0;font:17px/1.55 "SF Pro Display","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:
       radial-gradient(900px 520px at 80% -30%,rgba(114,132,255,.35),transparent),
@@ -47,8 +48,11 @@
     .grid.three{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
     @media (max-width:900px){.hero{gap:32px;padding:50px 0}}
 
-    .btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:999px;padding:12px 22px;background:linear-gradient(120deg,var(--brand),var(--brand-2));color:#fff;font-weight:600;cursor:pointer;box-shadow:0 12px 28px rgba(91,107,255,.3)}
+    .btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:999px;padding:12px 22px;background:linear-gradient(120deg,var(--brand),var(--brand-2));color:#fff;font-weight:600;cursor:pointer;box-shadow:0 12px 28px rgba(91,107,255,.3);transition:transform .2s ease,box-shadow .2s ease;text-decoration:none}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(91,107,255,.4)}
     .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.18);color:var(--text);box-shadow:none}
+    .btn.ghost:hover{background:rgba(255,255,255,.04);box-shadow:0 8px 16px rgba(0,0,0,.2)}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
     .hero-left{display:flex;flex-direction:column;gap:32px}
     .hero-left p{margin:0}
     .promo-copy{color:var(--muted);margin:8px 0 0;font-size:16px;max-width:520px}
@@ -83,6 +87,80 @@
     .checklist li{margin-bottom:8px;color:var(--muted)}
     .checklist li::before{content:'— ';color:var(--brand)}
     .features-grid .card{min-height:100%}
+
+    /* New Sections */
+    .section-header{text-align:center;max-width:720px;margin:0 auto 48px}
+    .section-lead{color:var(--muted);font-size:18px;margin:12px 0 0}
+    
+    /* How It Works */
+    .how-it-works{margin:64px 0}
+    .steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:32px}
+    .step-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;text-align:center;position:relative;transition:transform .2s ease,box-shadow .2s ease}
+    .step-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+    .step-number{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:var(--brand-2)}
+    .step-icon{font-size:48px;margin-bottom:16px}
+    .step-card h3{margin:0 0 8px;font-size:20px}
+    .step-card p{margin:0;color:var(--muted);font-size:15px;line-height:1.5}
+    
+    /* Features Section */
+    .features-section{margin:64px 0}
+    .features-grid-large{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px;margin-top:32px}
+    .feature-card-large{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px;transition:transform .2s ease,box-shadow .2s ease}
+    .feature-card-large:hover{transform:translateY(-2px);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+    .feature-card-large.feature-highlight{grid-column:span 2;background:linear-gradient(135deg,rgba(107,123,255,.08),rgba(125,242,255,.08))}
+    @media (max-width:900px){.feature-card-large.feature-highlight{grid-column:span 1}}
+    .feature-icon{font-size:40px;margin-bottom:16px}
+    .feature-card-large h3{margin:0 0 12px;font-size:22px}
+    .feature-card-large>p{margin:0 0 16px;color:var(--muted);line-height:1.6}
+    .feature-benefits{list-style:none;padding:0;margin:16px 0 0}
+    .feature-benefits li{padding:8px 0 8px 28px;color:var(--muted);font-size:15px;position:relative}
+    .feature-benefits li::before{content:'✓';position:absolute;left:0;color:var(--brand-2);font-weight:700}
+    .feature-screenshot{margin-top:24px;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+    .feature-screenshot img{width:100%;display:block;background:var(--surface-soft)}
+    
+    /* Pricing Section */
+    .pricing-section{margin:64px 0}
+    .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;margin-top:32px;max-width:900px;margin-left:auto;margin-right:auto}
+    .pricing-card{background:var(--surface);border:2px solid var(--border);border-radius:24px;padding:32px;display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;position:relative}
+    .pricing-card:hover{transform:translateY(-4px);box-shadow:0 24px 48px rgba(0,0,0,.35)}
+    .pricing-card.featured{border-color:var(--brand);box-shadow:0 20px 40px rgba(107,123,255,.25)}
+    .pricing-card.featured:hover{box-shadow:0 28px 56px rgba(107,123,255,.35)}
+    .pricing-badge{position:absolute;top:-12px;right:24px;background:linear-gradient(120deg,var(--brand),var(--brand-2));color:#fff;padding:6px 16px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.05em}
+    .pricing-header{text-align:center;padding-bottom:24px;border-bottom:1px solid var(--border)}
+    .pricing-header h3{margin:0 0 16px;font-size:24px}
+    .pricing-amount{display:flex;align-items:baseline;justify-content:center;gap:4px;margin-bottom:8px}
+    .pricing-amount .price{font-size:48px;font-weight:700;background:linear-gradient(120deg,var(--brand),var(--brand-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .pricing-amount .period{font-size:18px;color:var(--muted)}
+    .pricing-desc{color:var(--muted);font-size:14px;margin:0}
+    .pricing-features{list-style:none;padding:24px 0;margin:0;flex-grow:1}
+    .pricing-features li{padding:10px 0 10px 32px;font-size:15px;position:relative;color:var(--text)}
+    .pricing-features li.included::before{content:'✓';position:absolute;left:0;color:var(--brand-2);font-weight:700;font-size:18px}
+    .pricing-features li.not-included{color:var(--muted);opacity:.5}
+    .pricing-features li.not-included::before{content:'✕';position:absolute;left:0;color:var(--muted);font-size:16px}
+    .pricing-card .btn{width:100%;justify-content:center;margin-top:auto}
+    .pricing-note{text-align:center;color:var(--muted);font-size:14px;margin-top:32px;max-width:700px;margin-left:auto;margin-right:auto}
+    
+    /* Trust Section */
+    .trust-section{margin:64px 0}
+    .trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:32px}
+    .trust-badge{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:28px;text-align:center}
+    .trust-icon{font-size:48px;margin-bottom:12px}
+    .trust-badge h4{margin:0 0 8px;font-size:18px}
+    .trust-badge p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+    .stats-row{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin-top:48px;padding:32px;background:rgba(255,255,255,.02);border-radius:20px;border:1px solid var(--border)}
+    .stat-item{text-align:center}
+    .stat-item strong{display:block;font-size:32px;background:linear-gradient(120deg,var(--brand),var(--brand-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
+    .stat-item span{display:block;color:var(--muted);font-size:13px}
+    
+    /* Support Section */
+    .support-section{margin:64px 0}
+    
+    /* Final CTA */
+    .cta-final{margin:64px 0 32px}
+    .cta-final-content{text-align:center;max-width:720px;margin:0 auto;padding:48px 32px!important}
+    .cta-final h2{margin:0 0 16px}
+    .cta-final .lead{margin:0 0 28px}
+    .cta-final .cta-row{justify-content:center}
 
     /* Accordion */
     details{border:1px solid var(--border);border-radius:12px;padding:12px 16px;background:rgba(255,255,255,.02)}
@@ -121,11 +199,11 @@
         <span>SpendlyGo</span>
       </a>
       <nav>
-        <a class="link" data-nav href="#/">Home</a>
+        <a class="link" href="#/">Home</a>
+        <a class="link" href="#features">Features</a>
+        <a class="link" href="#pricing">Pricing</a>
         <a class="link" data-nav href="#/faq">FAQ</a>
-        <a class="link" data-nav href="#/contact">Contact</a>
-        <a class="link" data-nav href="#/privacy">Privacy</a>
-        <a class="link" data-nav href="#/terms">Terms</a>
+        <a class="link" href="https://apps.apple.com/ch/app/spendlygo/id6754088390" target="_blank" rel="noopener" style="background:linear-gradient(120deg,var(--brand),var(--brand-2));color:#fff;padding:8px 16px;border-radius:999px;font-weight:600">Download</a>
       </nav>
     </div>
   </header>
@@ -136,40 +214,52 @@
       <div class="hero">
         <section class="card pad hero-left">
           <div>
-            <p class="eyebrow">AI receipt scanner, ERP-ready</p>
-            <h1>Minimal help center. Maximum clarity.</h1>
-            <p class="lead">Restore a purchase, reach out, or learn how SpendlyGo keeps every receipt audit-ready—without digging through menus.</p>
-            <p class="promo-copy">Fast, private receipt capture with on-device AI. Auto-organize expenses, sync to ERP, and export to PDF/CSV. Upgrade for unlimited scans. Includes 10 free scans.</p>
+            <p class="eyebrow">On-Device AI • ERP-Ready • Private by Design</p>
+            <h1>Stop Manual Receipt Entry. Scan, Extract, Sync to Your ERP.</h1>
+            <p class="lead">Turn paper receipts into clean, structured data in seconds. SpendlyGo runs AI extraction on your iPhone, organizes expenses intelligently, and syncs directly to NetSuite, QuickBooks, or any ERP system.</p>
+            <p class="promo-copy">No more manual typing. No data entry errors. No privacy compromises. Capture receipts with one tap, let on-device AI extract merchant, date, total, tax, and category—then export to CSV, PDF, or push via webhook to your accounting system. Try 10 scans free.</p>
           </div>
           <div class="cta-row">
-            <a class="btn" href="#/contact">Contact Support</a>
-            <a class="btn ghost" href="#/faq">Browse FAQs</a>
+            <a class="btn" href="https://apps.apple.com/ch/app/spendlygo/id6754088390" target="_blank" rel="noopener">Download Free on App Store</a>
+            <a class="btn ghost" href="#/pricing">View Pricing</a>
           </div>
           <div class="stat-line">
-            <div><strong>24h</strong>Avg. first reply</div>
-            <div><strong>98%</strong>Customer satisfaction</div>
+            <div><strong>On-Device</strong>Privacy first</div>
             <div><strong>10k+</strong>Receipts processed weekly</div>
+            <div><strong>Any ERP</strong>CSV, PDF, Webhook</div>
           </div>
           <div class="feature-list">
             <article class="feature">
-              <strong>On-device AI</strong>
-              <span>Fast private recognition—even offline.</span>
+              <strong>⚡ One-Tap Scanning</strong>
+              <span>Capture receipts in under 3 seconds.</span>
             </article>
             <article class="feature">
-              <strong>ERP-ready</strong>
-              <span>Push receipts to NetSuite, QuickBooks, or custom webhooks.</span>
+              <strong>🧠 On-Device AI</strong>
+              <span>Extract data without sending to cloud.</span>
             </article>
             <article class="feature">
-              <strong>One-tap exports</strong>
-              <span>PDF, CSV, and full audit history whenever you need it.</span>
+              <strong>🔗 ERP Integration</strong>
+              <span>Sync to NetSuite, QuickBooks, Xero, SAP.</span>
+            </article>
+            <article class="feature">
+              <strong>📊 Smart Export</strong>
+              <span>CSV, PDF, ZIP—formatted for accounting.</span>
+            </article>
+            <article class="feature">
+              <strong>🔍 Powerful Search</strong>
+              <span>Find receipts by merchant, date, tag, amount.</span>
+            </article>
+            <article class="feature">
+              <strong>🔒 Private & Secure</strong>
+              <span>Your data stays on your device by default.</span>
             </article>
           </div>
         </section>
         <section class="card pad hero-right">
           <div>
-            <p class="eyebrow">Product tour</p>
-            <h2>See SpendlyGo on iOS</h2>
-            <p class="lead">Watch the AI receipt scanner capture, categorize, and sync expenses.</p>
+            <p class="eyebrow">See It In Action</p>
+            <h2>From Receipt to ERP in Seconds</h2>
+            <p class="lead">Watch how SpendlyGo scans, extracts, and organizes expense data—no manual typing required.</p>
           </div>
           <div class="device-frame">
             <video id="demo-video" controls autoplay muted loop playsinline poster="./AppIcon-20@3x.png">
@@ -189,43 +279,265 @@
           </div>
         </section>
       </div>
-      <div class="action-grid">
-        <article class="action-card">
-          <strong>Restore purchases</strong>
-          <span>Open the app → Settings → Restore Purchases.</span>
-          <a href="#/faq">Step-by-step guide</a>
-        </article>
-        <article class="action-card">
-          <strong>Upgrade to Premium</strong>
-          <span>Review plans in Settings → Premium.</span>
-          <a href="#/faq">Compare plans</a>
-        </article>
-        <article class="action-card">
-          <strong>Email support</strong>
-          <span>We reply within one business day.</span>
-          <a href="mailto:spendlygo@outlook.com">spendlygo@outlook.com →</a>
-        </article>
-      </div>
-      <div class="utility-grid grid three">
-        <article class="utility-card">
-          <p class="eyebrow">Contact</p>
-          <h3>Talk to SpendlyGo</h3>
-          <p>Use the support form or email us for human help within one business day.</p>
-          <a href="#/contact">Contact support →</a>
-        </article>
-        <article class="utility-card">
-          <p class="eyebrow">Resources</p>
-          <h3>Self-serve answers</h3>
-          <p>FAQs, Privacy Policy, Terms, and receipt scanning tips at your fingertips.</p>
-          <a href="#/faq">Visit the FAQ →</a>
-        </article>
-        <article class="utility-card">
-          <p class="eyebrow">Security</p>
-          <h3>Data peace of mind</h3>
-          <p>On-device extraction, optional iCloud sync, and instant export/delete controls.</p>
-          <a href="#/privacy">Review privacy →</a>
-        </article>
-      </div>
+
+      <!-- HOW IT WORKS -->
+      <section class="how-it-works" id="how-it-works">
+        <div class="section-header">
+          <p class="eyebrow">How It Works</p>
+          <h2>From Paper to ERP in Four Simple Steps</h2>
+          <p class="section-lead">No more manual data entry. No more spreadsheet errors. Just point, scan, and sync.</p>
+        </div>
+        <div class="steps-grid">
+          <article class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-icon">📸</div>
+            <h3>Scan Receipt</h3>
+            <p>Point your iPhone camera at any receipt. One tap captures the image with auto-cropping and enhancement.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-icon">🧠</div>
+            <h3>AI Extracts Data</h3>
+            <p>On-device AI instantly reads merchant, date, total, tax, currency, and category. No cloud upload required.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-icon">📁</div>
+            <h3>Smart Organization</h3>
+            <p>Add tags, projects, cost centers, and notes. Search by merchant, amount, date, or custom fields instantly.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-icon">🔗</div>
+            <h3>Export or Sync</h3>
+            <p>Generate CSV/PDF reports, push to ERP via webhook, or export ZIP bundles. Your workflow, your way.</p>
+          </article>
+        </div>
+      </section>
+      <!-- FEATURES -->
+      <section class="features-section" id="features">
+        <div class="section-header">
+          <p class="eyebrow">Core Features</p>
+          <h2>Everything You Need to Tame Receipt Chaos</h2>
+          <p class="section-lead">Built for accountants, finance teams, freelancers, and anyone who hates manual data entry.</p>
+        </div>
+        
+        <div class="features-grid-large">
+          <article class="feature-card-large">
+            <div class="feature-icon">📸</div>
+            <h3>One-Tap Capture</h3>
+            <p>Point your camera at any receipt and capture in under 3 seconds. Auto-crop, auto-enhance, and auto-rotate for perfect images every time.</p>
+            <ul class="feature-benefits">
+              <li>Works offline—no internet required</li>
+              <li>Handles crumpled, faded, or poorly lit receipts</li>
+              <li>Batch scanning for multiple receipts at once</li>
+            </ul>
+          </article>
+
+          <article class="feature-card-large">
+            <div class="feature-icon">🧠</div>
+            <h3>On-Device AI Extraction</h3>
+            <p>Advanced machine learning runs directly on your iPhone—no cloud upload, no privacy concerns. Extract merchant name, date, total, tax, currency, and line items with 95%+ accuracy.</p>
+            <ul class="feature-benefits">
+              <li>Data never leaves your device by default</li>
+              <li>Supports 20+ currencies and date formats</li>
+              <li>Learns from your corrections over time</li>
+            </ul>
+          </article>
+
+          <article class="feature-card-large">
+            <div class="feature-icon">🔍</div>
+            <h3>Smart Receipt Organization</h3>
+            <p>Stop digging through shoeboxes and email folders. SpendlyGo keeps every receipt searchable, taggable, and accessible in seconds.</p>
+            <ul class="feature-benefits">
+              <li>Custom tags, projects, cost centers, and notes</li>
+              <li>Filter by merchant, date range, amount, or category</li>
+              <li>Optional iCloud sync across all your devices</li>
+            </ul>
+          </article>
+
+          <article class="feature-card-large feature-highlight">
+            <div class="feature-icon">🔗</div>
+            <h3>Connect to Any ERP or Accounting Tool</h3>
+            <p>SpendlyGo speaks your accounting system's language. Export structured data that fits your existing finance stack—no manual reformatting required.</p>
+            <ul class="feature-benefits">
+              <li>Pre-built integrations: NetSuite, QuickBooks, Xero, SAP</li>
+              <li>Custom webhooks for any ERP or API endpoint</li>
+              <li>Define field mappings to match your data model</li>
+              <li>Delivery tracking with automatic retry for failed syncs</li>
+            </ul>
+            <div class="feature-screenshot">
+              <img src="./erp_automation/connections.png" alt="ERP connection settings showing NetSuite, QuickBooks, and custom webhook configurations" />
+            </div>
+          </article>
+
+          <article class="feature-card-large">
+            <div class="feature-icon">📊</div>
+            <h3>Export the Way You Work</h3>
+            <p>Clean CSV files for spreadsheets and ERP imports. Professional PDF summaries for reviews and audits. ZIP bundles with images and metadata for complete records.</p>
+            <ul class="feature-benefits">
+              <li>Customizable CSV columns and date formats</li>
+              <li>PDF reports with receipt thumbnails</li>
+              <li>Bulk export with filters (date range, tags, project)</li>
+            </ul>
+          </article>
+
+          <article class="feature-card-large">
+            <div class="feature-icon">🔒</div>
+            <h3>Privacy First, Always</h3>
+            <p>No ad trackers. No third-party analytics. No selling your purchase data. Receipt scanning and extraction happen on your device by default.</p>
+            <ul class="feature-benefits">
+              <li>On-device processing means your data stays yours</li>
+              <li>Optional iCloud sync—you control storage</li>
+              <li>Instant delete and export tools anytime</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- PRICING -->
+      <section class="pricing-section" id="pricing">
+        <div class="section-header">
+          <p class="eyebrow">Simple Pricing</p>
+          <h2>Start Free, Upgrade When Ready</h2>
+          <p class="section-lead">Test your real workflow with 10 free scans. No credit card. No commitment.</p>
+        </div>
+        
+        <div class="pricing-grid">
+          <article class="pricing-card">
+            <div class="pricing-header">
+              <h3>Free</h3>
+              <div class="pricing-amount">
+                <span class="price">CHF 0</span>
+              </div>
+              <p class="pricing-desc">Perfect for trying SpendlyGo</p>
+            </div>
+            <ul class="pricing-features">
+              <li class="included">10 total receipt scans</li>
+              <li class="included">On-device AI extraction</li>
+              <li class="included">Basic search and organization</li>
+              <li class="included">Local storage only</li>
+              <li class="not-included">No CSV/PDF/ZIP export</li>
+              <li class="not-included">No ERP sync or webhooks</li>
+              <li class="not-included">No iCloud sync</li>
+            </ul>
+            <a class="btn ghost" href="https://apps.apple.com/ch/app/spendlygo/id6754088390" target="_blank" rel="noopener">Download Free</a>
+          </article>
+
+          <article class="pricing-card featured">
+            <div class="pricing-badge">Most Popular</div>
+            <div class="pricing-header">
+              <h3>Premium</h3>
+              <div class="pricing-amount">
+                <span class="price">CHF 4.99</span>
+                <span class="period">/month</span>
+              </div>
+              <p class="pricing-desc">or CHF 39.99/year (save 33%)</p>
+            </div>
+            <ul class="pricing-features">
+              <li class="included">Unlimited receipt scans</li>
+              <li class="included">On-device AI extraction</li>
+              <li class="included">Advanced search with tags, projects, cost centers</li>
+              <li class="included">Optional iCloud sync</li>
+              <li class="included">CSV, PDF, and ZIP exports</li>
+              <li class="included">ERP sync via webhooks</li>
+              <li class="included">Custom field mappings</li>
+              <li class="included">Delivery tracking and retry logic</li>
+            </ul>
+            <a class="btn" href="https://apps.apple.com/ch/app/spendlygo/id6754088390" target="_blank" rel="noopener">Start Free Trial</a>
+          </article>
+        </div>
+        <p class="pricing-note">All subscriptions managed through Apple. Cancel anytime in iOS Settings. Your receipts remain visible after subscription expires.</p>
+      </section>
+
+      <!-- TRUST SIGNALS -->
+      <section class="trust-section">
+        <div class="section-header">
+          <p class="eyebrow">Trust & Security</p>
+          <h2>Built for Privacy, Designed for Business</h2>
+        </div>
+        <div class="trust-grid">
+          <article class="trust-badge">
+            <div class="trust-icon">🔒</div>
+            <h4>On-Device Processing</h4>
+            <p>AI extraction runs locally on your iPhone. Your receipt data never leaves your device unless you choose to sync.</p>
+          </article>
+          <article class="trust-badge">
+            <div class="trust-icon">🛡️</div>
+            <h4>No Ad Tracking</h4>
+            <p>Zero third-party trackers. We don't sell your data or show ads. Your purchases are your business.</p>
+          </article>
+          <article class="trust-badge">
+            <div class="trust-icon">☁️</div>
+            <h4>Optional iCloud Sync</h4>
+            <p>Keep receipts synced across devices with Apple's encrypted iCloud. You control what gets backed up.</p>
+          </article>
+          <article class="trust-badge">
+            <div class="trust-icon">🔐</div>
+            <h4>Enterprise-Ready Security</h4>
+            <p>Webhook authentication, custom field mapping, and delivery tracking for compliance and audit trails.</p>
+          </article>
+        </div>
+        <div class="stats-row">
+          <div class="stat-item">
+            <strong>10,000+</strong>
+            <span>Receipts processed weekly</span>
+          </div>
+          <div class="stat-item">
+            <strong>95%+</strong>
+            <span>Extraction accuracy</span>
+          </div>
+          <div class="stat-item">
+            <strong>&lt;3 sec</strong>
+            <span>Average scan time</span>
+          </div>
+          <div class="stat-item">
+            <strong>20+</strong>
+            <span>Supported currencies</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SUPPORT & TRUST -->
+      <section class="support-section">
+        <div class="section-header">
+          <p class="eyebrow">Support & Resources</p>
+          <h2>We're Here to Help</h2>
+        </div>
+        <div class="utility-grid grid three">
+          <article class="utility-card">
+            <p class="eyebrow">Support</p>
+            <h3>Get Help Fast</h3>
+            <p>Email support at spendlygo@outlook.com. We typically respond within 24 hours on business days.</p>
+            <a href="#/contact">Contact support →</a>
+          </article>
+          <article class="utility-card">
+            <p class="eyebrow">FAQs</p>
+            <h3>Quick Answers</h3>
+            <p>Common questions about restoring purchases, upgrading plans, data export, and ERP setup.</p>
+            <a href="#/faq">Browse FAQs →</a>
+          </article>
+          <article class="utility-card">
+            <p class="eyebrow">Privacy</p>
+            <h3>Your Data, Your Control</h3>
+            <p>On-device processing, optional iCloud sync, no ad trackers. Review our full privacy policy.</p>
+            <a href="#/privacy">Read privacy policy →</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="cta-final">
+        <div class="card pad cta-final-content">
+          <h2>Ready to Stop Manual Receipt Entry?</h2>
+          <p class="lead">Download SpendlyGo free on iOS. Scan 10 receipts, test ERP export, and see how much time you save.</p>
+          <div class="cta-row">
+            <a class="btn" href="https://apps.apple.com/ch/app/spendlygo/id6754088390" target="_blank" rel="noopener">Download on App Store</a>
+            <a class="btn ghost" href="#/pricing">View Pricing</a>
+          </div>
+          <p class="muted" style="margin-top:16px;font-size:14px">10 free scans included. No credit card required. iOS 15+ required.</p>
+        </div>
+      </section>
     </section>
 
     <!-- FAQ -->
@@ -398,6 +710,25 @@
   </footer>
 
   <script>
+    // Smooth scrolling for anchor links
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('year').textContent = new Date().getFullYear();
+      
+      // Handle anchor links (like #features, #pricing)
+      document.querySelectorAll('a[href^="#"]:not([href^="#/"])').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const targetId = link.getAttribute('href').substring(1);
+          const targetEl = document.getElementById(targetId);
+          if (targetEl && !targetEl.classList.contains('page')) {
+            e.preventDefault();
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+      
+      onRoute();
+    });
+    
     // Tiny hash router for Pages (so you get /#/privacy & /#/terms URLs)
     const routes = {
       '/': 'page-home',
@@ -414,17 +745,13 @@
       document.querySelectorAll('[data-nav]').forEach(a => a.classList.remove('active'));
       const active = [...document.querySelectorAll('[data-nav]')].find(a => a.getAttribute('href') === '#' + location.hash);
       if (active) active.classList.add('active');
-      window.scrollTo({top:0,behavior:'instant'});
+      window.scrollTo({top:0,behavior:'smooth'});
     };
     const onRoute = () => {
       const hash = location.hash.replace('#','') || '/';
       setActive(routes[hash] || 'page-home');
     };
     window.addEventListener('hashchange', onRoute);
-    window.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('year').textContent = new Date().getFullYear();
-      onRoute();
-    });
 
     // Progressive enhancement: intercept Formspree responses for UX
     function wireForm(id){
