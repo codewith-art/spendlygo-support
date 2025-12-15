@@ -5,6 +5,21 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SpendlyGo - AI Receipt Scanner & ERP Integration for iPhone</title>
   <meta name="description" content="Turn receipts into ERP-ready data in seconds. SpendlyGo uses on-device AI to scan, extract, and organize expenses. Sync to NetSuite, QuickBooks, Xero, or any accounting system. Private, fast, accurate. Try 10 scans free." />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://spendlygo.app/" />
+  <meta property="og:title" content="SpendlyGo – AI Receipt Scanner & ERP Integration" />
+  <meta property="og:description" content="Turn receipts into ERP-ready data in seconds. On-device AI extraction, sync to NetSuite, QuickBooks, Xero. Private & fast." />
+  <meta property="og:image" content="https://spendlygo.app/og-image.png" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://spendlygo.app/" />
+  <meta name="twitter:title" content="SpendlyGo – AI Receipt Scanner & ERP Integration" />
+  <meta name="twitter:description" content="Turn receipts into ERP-ready data in seconds. On-device AI extraction, sync to NetSuite, QuickBooks, Xero." />
+  <meta name="twitter:image" content="https://spendlygo.app/og-image.png" />
+  
   <style>
     :root{
       --bg:#03050c;
@@ -247,6 +262,32 @@
       .has-screenshot-hover:hover .screenshot-hint{opacity:.7}
       .has-screenshot-hover:hover .feature-screenshot-overlay{opacity:0}
     }
+
+    /* NEW Badge */
+    .new-badge{display:inline-block;background:linear-gradient(120deg,#ff6b6b,#ffa502);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;margin-left:8px;text-transform:uppercase;letter-spacing:.05em;animation:pulse-badge 2s ease-in-out infinite}
+    @keyframes pulse-badge{0%,100%{box-shadow:0 0 0 0 rgba(255,107,107,.4)}50%{box-shadow:0 0 0 8px rgba(255,107,107,0)}}
+
+    /* Audience Section */
+    .audience-section{margin:64px 0}
+    .audience-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(16px,4vw,24px);margin-top:clamp(24px,5vw,32px)}
+    .audience-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:clamp(20px,4vw,28px);text-align:center;transition:var(--transition-lift)}
+    .audience-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+    .audience-icon{font-size:48px;margin-bottom:12px}
+    .audience-card h4{margin:0 0 8px;font-size:20px}
+    .audience-card p{margin:0 0 12px;color:var(--muted);font-size:15px;line-height:1.5}
+    .audience-use-case{font-size:13px;color:var(--brand-2);font-style:italic}
+
+    /* Comparison Table */
+    .comparison-section{margin:64px 0}
+    .comparison-table{width:100%;border-collapse:collapse;margin-top:clamp(24px,5vw,32px);background:var(--surface);border-radius:20px;overflow:hidden;border:1px solid var(--border)}
+    .comparison-table th,.comparison-table td{padding:16px 20px;text-align:left;border-bottom:1px solid var(--border)}
+    .comparison-table th{background:rgba(255,255,255,.03);font-weight:700;font-size:15px}
+    .comparison-table td{font-size:14px;color:var(--muted)}
+    .comparison-table tr:last-child td{border-bottom:none}
+    .comparison-table .highlight-col{background:rgba(107,123,255,.08);color:var(--text)}
+    .comparison-table .check{color:var(--brand-2);font-weight:700}
+    .comparison-table .cross{color:var(--muted);opacity:.5}
+    @media(max-width:768px){.comparison-table{font-size:13px}.comparison-table th,.comparison-table td{padding:12px 10px}}
   </style>
 </head>
 <body>
@@ -262,6 +303,7 @@
       <nav id="mobile-nav">
         <a class="link" href="#/">Home</a>
         <a class="link" href="#features">Features</a>
+        <a class="link" href="#audience">Who It's For</a>
         <a class="link" href="#pricing">Pricing</a>
         <a class="link" data-nav href="#/faq">FAQ</a>
         <a class="link" href="https://apps.apple.com/ch/app/spendlygo/id6754088390" target="_blank" rel="noopener" style="background:linear-gradient(120deg,var(--brand),var(--brand-2));color:#fff;padding:12px 16px;border-radius:999px;font-weight:600">Download</a>
@@ -455,6 +497,54 @@
               <li>Instant delete and export tools anytime</li>
             </ul>
           </article>
+
+          <article class="feature-card-large feature-highlight">
+            <div class="feature-icon">📅</div>
+            <h3>Receipt Intelligence Timeline <span class="new-badge">New</span></h3>
+            <p>Your receipts now tell a story. SpendlyGo automatically groups receipts by trip, day, or merchant sequence—giving you a contextual memory of your spending.</p>
+            <ul class="feature-benefits">
+              <li>Trip Detection: Multi-day purchases auto-grouped as business trips</li>
+              <li>Day Grouping: All receipts from a busy day organized together</li>
+              <li>Sequence Detection: Coffee → Lunch → Dinner at the same merchant chain</li>
+              <li>Smart Context: AI suggests purposes like "Client Meeting" or "Team Lunch"</li>
+              <li>Manual Groups: Create custom groups for projects or events</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- WHO IT'S FOR -->
+      <section class="audience-section" id="audience">
+        <div class="section-header">
+          <p class="eyebrow">Who It's For</p>
+          <h2>Built for People Who Value Their Time</h2>
+          <p class="section-lead">Whether you're tracking personal expenses or managing enterprise receipts, SpendlyGo adapts to your workflow.</p>
+        </div>
+        <div class="audience-grid">
+          <article class="audience-card">
+            <div class="audience-icon">💼</div>
+            <h4>Consultants & Freelancers</h4>
+            <p>Track client expenses on the go. Export receipts grouped by project for easy invoicing and tax prep.</p>
+            <span class="audience-use-case">"I bill 3 clients—now each project has its own receipt folder."</span>
+          </article>
+          <article class="audience-card">
+            <div class="audience-icon">📊</div>
+            <h4>Finance Teams</h4>
+            <p>Eliminate manual data entry. Push receipt data directly to your ERP with custom field mappings.</p>
+            <span class="audience-use-case">"We cut expense processing time by 80%."</span>
+          </article>
+          <article class="audience-card">
+            <div class="audience-icon">✈️</div>
+            <h4>Business Travelers</h4>
+            <p>Capture receipts between flights. Timeline view auto-groups your trip expenses for easy reporting.</p>
+            <span class="audience-use-case">"My Tokyo trip receipts were already organized when I landed."</span>
+          </article>
+          <article class="audience-card">
+            <div class="audience-icon">🏢</div>
+            <h4>Small Business Owners</h4>
+            <p>Keep business and personal separate. Tag expenses by category, export for your accountant.</p>
+            <span class="audience-use-case">"Tax season used to take weeks. Now it's a one-click export."</span>
+          </article>
         </div>
       </section>
 
@@ -559,6 +649,69 @@
             <span>Supported currencies</span>
           </div>
         </div>
+      </section>
+
+      <!-- COMPARISON TABLE -->
+      <section class="comparison-section" id="comparison">
+        <div class="section-header">
+          <p class="eyebrow">Why SpendlyGo?</p>
+          <h2>See How We Compare</h2>
+          <p class="section-lead">Privacy-first, ERP-ready, and built for real workflows.</p>
+        </div>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="highlight-col">SpendlyGo</th>
+              <th>Expensify</th>
+              <th>Manual Entry</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>On-device AI processing</td>
+              <td class="highlight-col"><span class="check">✓</span></td>
+              <td><span class="cross">✕</span> Cloud only</td>
+              <td><span class="cross">✕</span> N/A</td>
+            </tr>
+            <tr>
+              <td>Privacy (no cloud upload)</td>
+              <td class="highlight-col"><span class="check">✓</span> Default</td>
+              <td><span class="cross">✕</span> Requires upload</td>
+              <td><span class="check">✓</span> Manual</td>
+            </tr>
+            <tr>
+              <td>ERP webhooks</td>
+              <td class="highlight-col"><span class="check">✓</span> Any endpoint</td>
+              <td><span class="check">✓</span> Limited</td>
+              <td><span class="cross">✕</span></td>
+            </tr>
+            <tr>
+              <td>One-time purchase option</td>
+              <td class="highlight-col"><span class="check">✓</span> Coming soon</td>
+              <td><span class="cross">✕</span> Subscription only</td>
+              <td><span class="check">✓</span> Free (time cost)</td>
+            </tr>
+            <tr>
+              <td>Works offline</td>
+              <td class="highlight-col"><span class="check">✓</span> Full functionality</td>
+              <td><span class="cross">✕</span> Limited</td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Timeline grouping (trips/days)</td>
+              <td class="highlight-col"><span class="check">✓</span> Automatic</td>
+              <td><span class="cross">✕</span></td>
+              <td><span class="cross">✕</span></td>
+            </tr>
+            <tr>
+              <td>Price</td>
+              <td class="highlight-col"><strong>CHF 4.99/mo</strong></td>
+              <td>$10+/user/mo</td>
+              <td>Your time</td>
+            </tr>
+          </tbody>
+        </table>
       </section>
 
       <!-- SUPPORT & TRUST -->
